@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: eureka
+  security:
+    user:
+      name: gallop
+      password: 123456
+server:
+  port: 10025
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}:${random.long(1,100)}
+  client:
+    #表示是否将自己注册到Eureka Server，默认为true
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    #表示是否从Eureka Server获取注册信息，默认为true。
+    #因为这是一个单点的Eureka Server，不需要同步其他的Eureka Server节点的数据，故而设为false。
+    fetch-registry: false
