@@ -8,6 +8,7 @@ springcloud-demo
 ├── consumer-service -- 后端微服务项目
 ├── eureka -- 服务注册与发现中心
 ├── gallop-common -- 工具类及通用代码
-└── gateway-hystrix -- 服务网关
+├── gateway-hystrix -- 服务网关
+└── rabbitmq-consumer --消息队列的基本使用
 
 ```

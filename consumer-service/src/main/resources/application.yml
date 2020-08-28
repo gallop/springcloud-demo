@@ -17,12 +17,29 @@ spring:
         max-active: 10
         # 等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时
         max-wait: 1000
-eureka:
-  client:
-    service-url:
-      defaultZone: http://gallop:123456@localhost:10025/eureka/
-  instance:
-    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  rabbitmq:
+    addresses: 192.168.2.125
+    username: admin
+    password: 123456
+    virtual-host: myvhost
+    connection-timeout: 15000
+    port: 5672
+    # 投递结果回调开关
+    publisher-confirm-type: correlated
+    # 未找到投递目标队列失败回调开关，比如RouteKey匹配不到目标队列
+    publisher-returns: true
+    cache:
+      connection:
+        mode: connection
+        size: 5
+      channel:
+        size: 2
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://gallop:123456@localhost:10025/eureka/
+#  instance:
+#    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 
 jwt:
   token-header: x-mch-user-token

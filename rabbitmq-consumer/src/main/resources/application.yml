@@ -1,0 +1,14 @@
+#rabbitmq
+spring:
+  rabbitmq:
+    addresses: 192.168.2.125:5672
+    username: admin
+    password: 123456
+    virtual-host: myvhost
+    connection-timeout: 15000
+    listener:
+      mysimple:
+        acknowledge-mode: manual
+        concurrency: 3
+        prefetch: 2
+        max-concurrency: 3
